@@ -53,6 +53,8 @@ public class Android27_Lab1 {
                     System.out.println("So cm sau chuyen doi la"+cm1);
                     break;
         }*/
+        
+        EmployeeManager employeeManager = new EmployeeManager();
         //tao menu 
         do{
             System.out.println("Moi ban chon");
@@ -65,19 +67,35 @@ public class Android27_Lab1 {
             int choice = scanner.nextInt();
             switch(choice){
                 case 1:
+                    employeeManager.addEmployee();
                     // code them moi nv go here
                     break;
                     
                 case 2:
+                    employeeManager.listEmployee();
                     //code list danh sach nv go here
                     break;
                     
                 case 3:
+                    Scanner scanner1 = new Scanner(System.in);
+                    System.out.println("Nhap id");
+                    String id = scanner1.nextLine();
+                    int findIndex = employeeManager.findEmployeeById(id);
+                    if(findIndex>-1){
+                        EmployeeModel employeeModel = employeeManager.getEmployees().get(findIndex);
+                        //System.out.println("Id");
+                    }else{
+                        System.out.println("Ko tim thay ");
+                    }
                     //code tim kiem nv theo id go here
                     break;
                     
                 case 4:
                     //code xoa nv theo id go here
+                    Scanner scanner2 = new Scanner(System.in);
+                    System.out.println("Nhap id");
+                    String id2 = scanner2.nextLine();
+                    employeeManager.deleteEmployee(id2);
                     break;
                 
                 case 5:
